@@ -1,0 +1,32 @@
+link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+
+style.
+    center {
+        margin-top: 5%;
+        max-width: 25%;
+        text-align: center;
+        margin-left: 35%;
+    }
+    .form-control {
+        margin-bottom: 10px;
+    }
+    body {
+        background-image: url('/site/background.jpg');
+        font-family: SansSerif;
+    }
+
+    .form-signin-heading {
+        color: whitesmoke;
+    }
+
+
+
+center
+    div.container
+        form.form-signin(method='POST' action='/loginAdmin')
+            h1.form-signin-heading Please Login
+            label.sr-only(for='username') Username:
+            input#username.form-control(type='text', placeholder='username' name='username')
+            label.sr-only(for='password') Password:
+            input#password.form-control(type='password', placeholder='password' name='password')
+            button.btn.btn-lg.btn-primary.btn-block(type='submit') Login

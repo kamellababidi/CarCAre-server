@@ -1,0 +1,89 @@
+style
+    include ./style/addCompany.css
+div.left
+    div.company
+        h3 Company's Information:
+        if errMessage
+            div.error
+                p #{errMessage}
+            br
+        if sucsMessage
+            div.success
+                p #{sucsMessage}
+            br
+        div.alert-danger
+            p#savError
+        div.alert-success
+            p#serSucMessage
+        form#firas
+            div.container
+                div.row
+                    div.left-side.col-xl-6
+                        div.form-group
+                            label(for='name') Name:
+                            input#name.form-control(type='text', placeholder="Company's name" name='name' required)
+                        div.form-group
+                            label(for='name_arabic') Name in Arabic:
+                            input#name_arabic.form-control(type='text', placeholder="اسم الشركة" name='name_arabic' required)
+                        div.form-group
+                            label(for='email') Email:
+                            input#email.form-control(type='email', placeholder='name@email.com' name='email' required)
+                        div.form-group
+                            label(for='phone') Phone
+                            input#phone.form-control(type='text', placeholder='phone number' name='phone' required)
+                        div.form-group
+                            label(for='description') Description:
+                            textarea#description.form-control(placeholder='Description' name='description')
+                        div.form-group
+                            label(for='description_arabic') Description in Arabic:
+                            textarea#description_arabic.form-control(placeholder='الوصف' name='description_arabic')
+                        div.form-group
+                            label(for="location") Select location:
+                            select#location.form-control
+                               each value in cities
+                                   option(value=`${value.id}`) #{value.value}
+                    div.right-side.col-xl-6
+                        div.form-group.photo
+                            label(for='upload') Picture:
+                            input#upload.form-control(type='file', name='picture' required)
+                            #upload-demo
+                            input#imagebase64.d-none(type="file" name="sampleFile")
+            br
+            br
+            h3 Company's Services:
+            div.alert-danger
+                p#serErrMessage
+            each value in services
+                - var service_id = `service_${value.id}`
+                - var price_id = `price_${value.id}`
+                - var desc_id = `desc_${value.id}`
+                - var desc_arabic_id = `desc_arabic_${value.id}`
+
+                div.form-group
+                    input(type='hidden' name=`${value.name}_id` value=`${value.id}`)
+                div.form-check
+                    label.form-check-label
+                        div.checkbox.checkbox-info.checkbox-circle
+                            input.form-check-input.styled(id=service_id type='checkbox', name='service', value=`${value.name}`, onclick=`check(${JSON.stringify(value.id)})`)
+                            |    #{value.name}
+                div(class = 'form-group d-none half '+`input_${value.id}`)
+                    label(for=price_id) Price:
+                    input.form-control(id=price_id class=`input_${value.id}` type='number', placeholder='price' name=`${value.name}_price`)
+                div(class = 'form-group d-none half '+`input_${value.id}`)
+                    label(for=desc_id) Description:
+                    textarea.form-control(id=desc_id , class=`input_${value.id}` placeholder='Description ...' name=`${value.name}_desc`)
+                div(class = 'form-group d-none half ' + `input_${value.id}`)
+                    label(for=desc_arabic_id) Description:
+                    textarea.form-control(id=desc_arabic_id , class=`input_${value.id}` placeholder='الوصف  ...' name=`${value.name}_desc_arabic`)
+                br
+
+            button.btn.btn-primary(type='submit') addCompany
+
+        script
+            include ./script/addCompany.js
+
+        script.
+
+            $('#firas').submit(function (e) {
+                e.preventDefault();
+                })

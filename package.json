@@ -1,0 +1,42 @@
+{
+  "name": "carcare-server",
+  "version": "1.0.0",
+  "description": "the server side of a service booking app",
+  "main": "server/server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bitly": "^5.0.12",
+    "body-parser": "^1.18.2",
+    "croppie": "^2.6.2",
+    "dateformat": "^3.0.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.2.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "nexmo": "^2.2.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "path": "^0.12.7",
+    "pug": "^2.0.3",
+    "sequelize": "^4.37.4",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/firas_ghanem/carcare-server.git"
+  },
+  "keywords": [
+    "car"
+  ],
+  "author": "Firas Ghanem",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/firas_ghanem/carcare-server#readme"
+}

@@ -1,0 +1,37 @@
+.error {
+    background-color: red;
+    font-weight: bold;
+    font-family: serif;
+    max-width: 35%;
+}
+
+.success {
+    background-color: mediumseagreen;
+    font-weight: bold;
+    font-family: serif;
+    max-width: 35%;
+}
+
+.half {
+    max-width: 50%;
+    margin-left: 15px;
+}
+
+.form-check {
+    margin-left: 15px;
+}
+
+.alert-danger {
+    margin-left: 15px;
+    max-width: 50%;
+    text-align: center;
+}
+
+.left {
+    margin-left: 15px;
+}
+
+body {
+    background-image: url('/site/background2.jpg');
+    font-family: SansSerif !important;
+}

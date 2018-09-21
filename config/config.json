@@ -1,0 +1,29 @@
+{
+  "development": {
+    "logging": false,
+    "username": "root",
+    "password": "1234",
+    "database": "car_care",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "define": {
+      "timestamp": true
+    }
+  },
+  "test": {
+    "logging": false,
+    "username": "root",
+    "password": "1234",
+    "database": "car_care",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "logging": false,
+    "username": "root",
+    "password": "1234",
+    "database": "car_care",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

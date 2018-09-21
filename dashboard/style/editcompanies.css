@@ -1,0 +1,40 @@
+img {
+    max-width: 170px;
+    max-height: 170px;
+}
+
+.row {
+    margin-right: 20px;
+    margin-left: 15px;
+}
+
+.tiles {
+    margin-bottom: 15px;
+}
+
+#profile-image1 {
+    cursor: pointer;
+}
+.tital{ font-size:16px; font-weight:500;}
+.bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+th a
+{
+    display:block;
+}

@@ -1,0 +1,24 @@
+include head
+
+body
+    include header.pug
+
+    br
+
+    if name
+        h3 welcome #{name}
+
+    if login
+        include login
+
+    if addcompany
+        include addCompany
+
+    if addservice
+        include addService
+
+    if editcompanies
+        include editcompanies
+
+    if books
+        include books

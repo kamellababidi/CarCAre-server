@@ -1,0 +1,78 @@
+html
+    head
+
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        script(src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous")
+
+        link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+
+        style
+            include ./style/form.css
+
+
+body
+    br
+    .container
+        h2 Customer Information
+
+        h6 Name: #{data.customer}
+        h6 Phone: #{data.phone}
+        h6 Location: #{data.location}
+            | you can find him
+            a(href=`${data.locationLink}`) here
+            | .
+
+        h6 Services:
+        each value in data.services
+            ol
+                li #{value.name}
+
+        br
+
+        if data.driver
+            h6 Driver's Name: #{data.driver.name}
+            h6 Driver's Phone: #{data.driver.phone}
+        if data.status == 'open' || data.status == 'accepted'
+            form#accept
+                input#bookId(type='hidden' value=`${data.bookId}` name='bookId')
+                input#companyId(type='hidden' value=`${data.companyId}` name='companyId')
+                input#status(type='hidden' value='accepted' name='status')
+
+                .form-group
+                    label(for="driverName") إسم السائق :
+                    input#driverName.form-control(type="text" placeholder="أدخل الإسم ..." name="driverName" required="")
+                .form-group
+                    label(for="driverPhone") رقم هاتف السائق :
+                    input#driverPhone.form-control(type="text" placeholder="أدخل رقم الهاتف ..." name="driverPhone" required="")
+                .form-group
+                    label(for="driverCar") نوع سيارة السائق :
+                    input#driverCar.form-control(type="text" placeholder="أدخل نوع السيارة ..." name="driverCar" required="")
+                center
+                    button.btn.btn-default(type="submit") send
+        else if data.status == 'driver sent'
+            h3 Driver Sent
+            form#acceptt
+                input#bookId(type='hidden' value=`${data.bookId}` name='bookId')
+                input#companyId(type='hidden' value=`${data.companyId}` name='companyId')
+                input#status(type='hidden' value='done' name='status')
+                center
+                    button.btn.btn-default(type="submit") Completed
+        else if data.status == 'done'
+            center
+                h3 Completed
+
+    script.
+        $('#accept').submit(function (e) {
+            e.preventDefault();
+        })
+
+        $('#acceptt').submit(function (e) {
+            e.preventDefault();
+        })
+
+    script
+        include ./script/form.js
+    if data.status == 'open'
+        script.
+            acceptBook(`#{data.bookId}`)

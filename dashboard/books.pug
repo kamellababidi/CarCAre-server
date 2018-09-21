@@ -1,0 +1,53 @@
+style
+    include ./style/books.css
+script
+    include ./script/books.js
+
+
+table#books_table
+    tr
+        th(onclick="sortTable(0)")
+            a(href='#') No.
+        th(onclick="sortTable(1)")
+            a(href='#') UserName
+        th(onclick="sortTable(2)")
+            a(href='#') User's Phone
+        th(onclick="sortTable(3)")
+            a(href='#') Company
+        th(onclick="sortTable(4)")
+            a(href='#') Company's Phone
+        th(onclick="sortTable(5)")
+            a(href='#') services
+        th(onclick="sortTable(6)")
+            a(href='#') Ordered at
+        th(onclick="sortTable(7)")
+            a(href='#') status
+
+    each value in data
+        // -var date = new Date(value.createdAt);
+        // -var year = date.getFullYear();
+        // -var month = date.getMonth();
+        // -var day = date.getDay();
+        // -var hour = date.getHours();
+        // -var minutes = date.getMinutes();
+        // -var orderedAt = day + '/' + month + '/' + year + ' ' + hour + ':' + minutes;
+        tr
+            td #{value.id}
+            td #{value.member.username}
+            td #{value.member.phone}
+            td #{value.books_services[0].companies_service.company.name}
+            td #{value.books_services[0].companies_service.company.phone}
+            td
+                ol
+                    each vol in value.books_services
+                        li #{vol.companies_service.service.name}
+                        br
+            td #{value.date_created}
+            td #{value.status}
+br
+br
+center
+    a#dlink(style='display:none;')
+    input(type='button', onclick="tableToExcel('books_table', 'BooksSheet', 'books_" + Date() + ".xls')", value='Export to Excel')
+
+    input(type='button', onclick="clearBooks()" value='Clear Books' style="margin-left: 10px")

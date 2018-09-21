@@ -1,0 +1,57 @@
+style
+    include ./style/editcompanies.css
+
+if errMessage
+    div.error
+        p #{errMessage}
+
+if sucsMessage
+    div.success
+        p #{sucsMessage}
+br
+
+div.row(style="margin-right: 0; margin-left: 0")
+    div.col-md-6
+        form(method='POST' action='/addservice' style="margin-left: 15px")
+            div.form-group
+                label(for='name') Service Name:
+                input#name.form-control(type='text', placeholder='service Name' name='name' style="max-width: 50%;")
+            div.form-group
+                label(for='name_arabic') Service Name in Arabic:
+                input#name_arabic.form-control(type='text', placeholder='اسم الخدمة' name='name_arabic' style="max-width: 50%;")
+            button.btn.btn-primary(type='submit') addCompany
+
+
+        form(method='POST' action='/addcity' style="margin-left: 15px")
+            div.form-group
+                label(for='city_name') City Name:
+                input#city_name.form-control(type='text', placeholder='city Name' name='cityName' style="max-width: 50%;")
+            div.form-group
+                label(for='city_name_arabic') City Name in Arabic:
+                input#city_name_arabic.form-control(type='text', placeholder='اسم المدينة' name='cityNameArabic' style="max-width: 50%;")
+            button.btn.btn-primary(type='submit') add City
+    div.col-md-2
+        h4 Cities
+        br
+        table#cities
+            tr
+                th(onclick="sortTable(0)")
+                    a(href='#') No.
+                th(onclick="sortTable(1)")
+                    a(href='#') Name
+                th(onclick="sortTable(2)")
+                    a(href='#') Status
+                th(onclick="sortTable(3)")
+                    a(href='#') Action
+
+            each value in data
+                tr
+                    td #{value.id}
+                    td #{value.name}
+                    td #{value.active}
+                    td
+                        if value.active == 'active'
+                            a(href=`/deactivateCity?id=${value.id}`) Deactivate
+                        else
+                            a(href=`/activateCity?id=${value.id}`) Activate
+        br
